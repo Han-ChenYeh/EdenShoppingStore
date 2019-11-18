@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EdenShoppingStore.Models.大分類>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_person.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.大分類預覽圖)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.大分類名稱)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.建立日期)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.大分類預覽圖)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.大分類名稱)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.建立日期)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.大分類ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.大分類ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.大分類ID })
+        </td>
+    </tr>
+}
+
+</table>

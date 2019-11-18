@@ -1,0 +1,88 @@
+﻿@model AddressViewModel
+
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_person.cshtml";
+}
+
+<h2>收貨地址</h2>
+<hr>
+<form action="/Person/AddressInsert" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.address.收貨姓名, new { htmlAttributes = new { @id = "inputName", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.address.收貨姓名, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPhone" class="col-sm-2 col-form-label">收貨電話</label>
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.address.收貨電話, new { htmlAttributes = new { @id = "inputPhone", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.address.收貨電話, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputAddress" class="col-sm-2 col-form-label">地址</label>
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.address.地址, new { htmlAttributes = new { @id = "inputAddress", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.address.地址, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-md-2 col-md-2">
+            <input type="submit" value="新增收貨地址" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+
+@foreach (var item in Model.addressList) {
+    <div class="card" style="width: 100%;">
+        <div class="card-body row">
+            <div class="col-4 col-sm-2">
+                @Html.DisplayNameFor(x => x.address.收貨姓名)
+            </div>
+            <div class="col-5 col-sm-8">
+                @Html.DisplayFor(x => item.收貨姓名)
+            </div>
+            <div class="col-3 col-sm-2" style="text-align:right">
+
+                <!--
+                後端使用
+                    [HttpPost]
+                    [ValidateAntiForgeryToken]
+
+                <form action="/Person/AddressDelete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="收貨ID" value="@item.收貨ID" />
+                    <input type="submit" value="刪除">
+                </form>
+                -->
+                <!--後端使用 [HttpGet]-->
+                <a href="/Person/AddressDelete/@item.收貨ID">
+                    <i class="fas fa-trash-alt fa-2x" style="color:black"></i>
+                </a>
+
+
+            </div>
+
+            <div class="col-4 col-sm-2">
+                @Html.DisplayNameFor(x => x.address.收貨電話)
+            </div>
+            <div class="col-8 col-sm-10">
+                @Html.DisplayFor(x => item.收貨電話)
+            </div>
+            <div class="col-4 col-sm-2">
+                @Html.DisplayNameFor(x => x.address.地址)
+            </div>
+            <div class="col-8 col-sm-10">
+                @Html.DisplayFor(x => item.地址)
+            </div>
+        </div>
+    </div>
+    <br />
+}
+

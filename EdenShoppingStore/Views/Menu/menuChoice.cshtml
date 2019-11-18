@@ -1,0 +1,85 @@
+﻿@model IEnumerable<產品>
+
+@{
+    ViewBag.Title = "伊甸產品";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 newArriva">
+            <img src="~/Asserts/images/20170407152900.png" alt="">
+        </div>
+    </div>
+    <article class="row">
+        <div class="col-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                       aria-controls="home" aria-selected="true">書籍</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                       aria-controls="profile" aria-selected="false">卡片/明信片</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                       aria-controls="contact" aria-selected="false">隨身碟</a>
+                </li>
+            </ul>
+            <br>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if (item.小分類ID==1) { 
+                                <div class="col-sm-3">
+                                    <a href="itemDetail.html">
+                                        <img src="~/Asserts/images/20191031NEW_ARRIVA_021.png" alt="">
+                                    </a>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品名稱)</p>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品單價)</p>
+                                </div>
+                            }
+                        
+                        }
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if (item.小分類ID == 2)
+                            {
+                                <div class="col-sm-3">
+                                    <a href="itemDetail.html">
+                                        <img src="~/Asserts/images/20191031NEW_ARRIVA_021.png" alt="">
+                                    </a>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品名稱)</p>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品單價)</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if (item.小分類ID == 3)
+                            {
+                                <div class="col-sm-3">
+                                    <a href="itemDetail.html">
+                                        <img src="~/Asserts/images/20191031NEW_ARRIVA_021.png" alt="">
+                                    </a>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品名稱)</p>
+                                    <p class="mb-0">@Html.DisplayFor(modelItem => item.產品單價)</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

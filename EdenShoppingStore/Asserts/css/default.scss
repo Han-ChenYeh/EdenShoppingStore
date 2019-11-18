@@ -1,0 +1,29 @@
+@import "_baseline";
+@import "_normalize";
+.logo{
+    text-align: center;
+}
+main{
+    margin-top: 1em;
+
+    ul{
+
+        display: flex;
+        display: -webkit-flex;
+        justify-content:center;
+        text-align: center;
+        
+    }
+}
+.newArriva{
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+footer{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    p{
+        font-size: 0.9em;
+    }
+}

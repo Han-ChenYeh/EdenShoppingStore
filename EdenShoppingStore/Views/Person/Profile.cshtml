@@ -1,0 +1,78 @@
+﻿@model 客戶主資料表
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_person.cshtml";
+}
+
+<h2>個人檔案</h2>
+<hr>   
+<form action="/Person/Profile" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="客戶ID" value="@Model.客戶ID" />
+    <div class="form-group row">
+        <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.客戶帳號, new { htmlAttributes = new {@disabled = "disabled", @id = "inputAccount", @class = "form-control-plaintext" } })
+            @Html.ValidationMessageFor(x => x.客戶帳號, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.客戶姓名, new { htmlAttributes = new { @id = "inputName", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶姓名, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            @Html.EditorFor(x => x.客戶Email, new { htmlAttributes = new { @id = "inputEmail", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPhone" class="col-sm-2 col-form-label">聯絡方式</label>
+        <div class="col-sm-10">
+            @Html.EditorFor(x => x.客戶手機, new { htmlAttributes = new { @id = "inputPhone", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶手機, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputAddress" class="col-sm-2 col-form-label">地址</label>
+        <div class="col-sm-10">
+            @Html.EditorFor(x => x.客戶地址, new { htmlAttributes = new { @id = "inputAddress", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶地址, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.客戶生日, htmlAttributes: new {@for="inputBirthDay", @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.客戶生日, new { htmlAttributes = new {@id="inputBirthDay", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶生日, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputSex" class="col-sm-2 col-form-label">性別</label>
+        <div class="col-sm-10">
+            @Html.EditorFor(x => x.客戶性別, new { htmlAttributes = new { @id = "inputSex", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.客戶性別, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-md-2 col-md-2">
+            <input type="submit" value="修改" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $('#inputBirthDay').datepicker({
+            autoHide: true,
+            format: "yyyy-mm-dd",
+            language:"zh-CN",
+            zIndex:2048,
+        });
+    });
+</script>
